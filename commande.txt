@@ -13,3 +13,5 @@ $ git add .
 $ git commit -m "Project Lte Laravel viewJS"
 
 $ git push -u origin main
+
+$ npm run dev
