@@ -1,0 +1,15 @@
+
+
+
+
+
+
+$ git init
+
+$ git remote add origin https://github.com/raed-msaed/laravel-view.git
+
+$ git add .
+
+$ git commit -m "Project Lte Laravel viewJS"
+
+$ git push -u origin main
