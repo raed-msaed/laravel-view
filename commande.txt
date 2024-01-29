@@ -1,8 +1,4 @@
-
-
-
-
-
+/***********cree copy in github*************/
 
 $ git init
 
@@ -15,3 +11,29 @@ $ git commit -m "Project Lte Laravel viewJS"
 $ git push -u origin main
 
 $ npm run dev
+
+
+
+/***********copy from github*************/
+$ git clone https://github.com/raed-msaed/laravel-view.git
+Cloning into 'laravel-view'...
+
+$ cd laravel-view/
+
+$ composer install
+
+$ composer update
+
+83 packages you are using are looking for funding.
+
+$ cp .env.example .env
+
+$ php artisan key:generate
+
+   INFO  Application key set successfully.
+
+$ code .
+
+$npm install
+
+$npm run dev
