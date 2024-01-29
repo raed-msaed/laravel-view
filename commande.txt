@@ -37,3 +37,5 @@ $ code .
 $npm install
 
 $npm run dev
+
+$ npm i @vitejs/plugin-vue
