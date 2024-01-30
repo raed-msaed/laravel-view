@@ -1,5 +1,7 @@
 <script setup>
+import axios from 'axios';
 import { ref, onMounted, reactive } from 'vue';
+import { Form, Field } from 'vee-validate';
 
 const users = ref([]);
 /*[
@@ -34,9 +36,20 @@ const getUsers = () => {
         })
 }
 
-const createUser = () => {
-    axios.post('/api/users', form);
-}
+const createUser = (values) => {
+    console.log(values);
+};
+
+// const createUser = () => {
+//     axios.post('/api/users', form)
+//         .then((response) => {
+//             users.value.unshift(response.data); /**use push for insert in the botom list or unshift for insert in the top */
+//             form.name = '';
+//             form.email = '';
+//             form.password = '';
+//             $('#createUserModal').modal('hide');
+//         });
+// };
 
 onMounted(() => {
     getUsers();
@@ -97,38 +110,40 @@ onMounted(() => {
     </div>
 
 
-    <!-- Modal -->
+    <!-- Modal CreateUserModal-->
     <div class="modal fade" id="CreateUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-body">
-                    <form autocomplete="off">
+                <Form @submit="createUser">
+                    <div class="modal-body">
                         <div class="form-group">
                             <label for="name" class="form-label">Name</label>
-                            <input v-model="form.name" type="text" class="form-control" id="name"
-                                placeholder="Enter full name">
+                            <Field name="name" type="text" class="form-control" id="name" aria-describedby="nameHelp"
+                                placeholder="Enter full name" />
                         </div>
                         <div class="form-group">
                             <label for="email" class="form-label">Email</label>
-                            <input v-model="form.email" type="email" class="form-control" id="email"
-                                placeholder="Enter Email">
+                            <Field name="email" type="email" class="form-control" id="email" aria-describedby="emailHelp"
+                                placeholder="Enter Email" />
                         </div>
-                    </form>
 
-                    <div class="form-group">
-                        <label for="password" class="form-label">Password</label>
-                        <input v-model="form.password" type="password" class="form-control" id="password"
-                            placeholder="Enter password">
+                        <div class="form-group">
+                            <label for="password" class="form-label">Password</label>
+                            <Field name="password" type="password" class="form-control" id="password"
+                                aria-describedby="passwordHelp" placeholder="Enter password" />
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button @click="createUser" type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </Form>
             </div>
         </div>
     </div>

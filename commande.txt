@@ -39,3 +39,14 @@ $npm install
 $npm run dev
 
 $ npm i @vitejs/plugin-vue
+
+/**************Install Jquery********************/
+
+$ npm i jquery
+
+/**************Install vee-validate********************/
+
+$ npm install vee-validate --save
+$ npm install -S  yup
+
+
